@@ -604,3 +604,309 @@ take 3[1,2,3,4,5] :: Num a => [a]
 2022-06-16 16:19:01.511632
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/saya/bprog2022/.ghci
+2022-06-23 14:56:12.4774208
+>>> :i Num
+type Num :: * -> Constraint
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+  {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+  	-- Defined in ‘GHC.Num’
+instance Num NominalDiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.NominalDiffTime’
+instance Num DiffTime
+  -- Defined in ‘time-1.9.3:Data.Time.Clock.Internal.DiffTime’
+instance Num Word -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Double -- Defined in ‘GHC.Float’
+2022-06-23 14:56:30.0324556
+>>> 1==2
+False
+2022-06-23 15:06:12.2948898
+>>> 1<2
+True
+2022-06-23 15:06:27.8606675
+>>> 1<=2
+True
+2022-06-23 15:06:38.6427906
+>>> 1>=2
+False
+2022-06-23 15:06:51.9093308
+>>> 'a'<'b'
+True
+2022-06-23 15:11:27.6548025
+>>> 'a'<'B'
+False
+2022-06-23 15:11:41.7636986
+>>> ''<'a'
+
+<interactive>:8:1: error:
+    Parser error on `''`
+    Character literals may not be empty
+2022-06-23 15:12:09.7948113
+>>> 'ab'<'b'
+
+<interactive>:9:1: error:
+    • Syntax error on 'ab'
+      Perhaps you intended to use TemplateHaskell or TemplateHaskellQuotes
+    • In the Template Haskell quotation 'ab'
+2022-06-23 15:13:01.8673027
+>>> 1/=2
+True
+2022-06-23 15:15:56.6981361
+>>> 1/=1
+False
+2022-06-23 15:16:05.7441391
+>>> :info abs
+type Num :: * -> Constraint
+class Num a where
+  ...
+  abs :: a -> a
+  ...
+  	-- Defined in ‘GHC.Num’
+2022-06-23 15:30:26.1211459
+>>> abu
+
+<interactive>:13:1: error:
+    • Variable not in scope: abu
+    • Perhaps you meant ‘abs’ (imported from Prelude)
+2022-06-23 15:30:47.7963126
+>>> abu (-234)
+
+<interactive>:14:1: error:
+    • Variable not in scope: abu :: t0 -> t
+    • Perhaps you meant ‘abs’ (imported from Prelude)
+2022-06-23 15:34:52.2803975
+>>> abs (-234)
+234
+2022-06-23 15:35:14.7372551
+>>> 
+2022-06-23 15:42:15.7770094
+>>> 
+2022-06-23 15:43:14.8234113
+>>> 
+2022-06-23 15:55:04.1042079
+>>> 
+2022-06-23 15:56:25.4824324
+>>> 
+2022-06-23 15:56:26.9438724
+>>> 
+2022-06-23 15:56:27.3929506
+>>> 
+2022-06-23 15:56:27.8820427
+>>> 
+2022-06-23 15:56:28.3689953
+>>> 
+2022-06-23 15:56:28.9218263
+>>> 
+2022-06-23 15:56:29.3783986
+>>> 
+2022-06-23 15:56:29.8743396
+>>> 
+2022-06-23 15:56:30.4030275
+>>> GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/saya/bprog2022/.ghci
+2022-06-30 14:58:32.8416314
+>>> [ x ^ 2 | x <-[1 .. 5] ]
+[1,4,9,16,25]
+2022-06-30 15:01:52.1362432
+>>> map (^2) [1..5]
+[1,4,9,16,25]
+2022-06-30 15:05:02.1939087
+>>> [ x ^*2 | x <-[1 .. 5] ]
+
+<interactive>:3:5: error:
+    • Variable not in scope: (^*) :: t0 -> t1 -> a
+    • Perhaps you meant one of these:
+        ‘*’ (imported from Prelude), ‘^’ (imported from Prelude),
+        ‘<*’ (imported from Prelude)
+2022-06-30 15:11:49.6141761
+>>> [ x *2 | x <-[1 .. 5] ]
+[2,4,6,8,10]
+2022-06-30 15:12:34.0417733
+>>> [x 'div' 2 | x < [1..5]]
+
+<interactive>:5:4: error:
+    • Syntax error on 'div'
+      Perhaps you intended to use TemplateHaskell or TemplateHaskellQuotes
+    • In the Template Haskell quotation 'div'
+2022-06-30 15:13:54.2572419
+>>> [ x 'div' 2 | x <-1..5]]
+
+<interactive>:6:20: error: parse error on input ‘..’
+2022-06-30 15:15:23.7582334
+>>> [ x 'diModv' 2| x <=[1 .. 5]]
+
+<interactive>:7:5: error:
+    • Syntax error on 'diModv'
+      Perhaps you intended to use TemplateHaskell or TemplateHaskellQuotes
+    • In the Template Haskell quotation 'diModv'
+2022-06-30 15:20:26.3823097
+>>> [ x 'div' 2| x <=[1 .. 5]]
+
+<interactive>:8:5: error:
+    • Syntax error on 'div'
+      Perhaps you intended to use TemplateHaskell or TemplateHaskellQuotes
+    • In the Template Haskell quotation 'div'
+2022-06-30 15:21:18.0546169
+>>> [(x,y) | y<-[4,5],x<- "abc"]
+[('a',4),('b',4),('c',4),('a',5),('b',5),('c',5)]
+2022-06-30 15:25:40.8879859
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x =double (double x)
+   8  
+   9  factrial::Integer -> Integer
+  10  factrial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int 
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs)  = x : (init xs)
+  21  
+  22  myconcat :: [[a]]->[a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs]
+Ok, no modules loaded.
+2022-06-30 15:30:14.8890575
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:30:14.9132806
+>>> myconcat [[1,2,3],[4,5],[6,7,8]
+
+<interactive>:12:32: error:
+    parse error (possibly incorrect indentation or mismatched brackets)
+2022-06-30 15:47:36.8389025
+>>> myconcat [[1,2,3],[4,5],[6,7,8,9]]
+[1,2,3,4,5,6,7,8,9]
+2022-06-30 15:47:58.8716543
+>>> [ 1 |_<- [1..5]]
+[1,1,1,1,1]
+2022-06-30 15:49:32.4911628
+>>> l src/First.hs
+
+<interactive>:15:7: error: Not in scope: ‘First.hs’
+2022-06-30 15:51:56.8076155
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x =double (double x)
+   8  
+   9  factrial::Integer -> Integer
+  10  factrial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int 
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs)  = x : (init xs)
+  21  
+  22  myconcat :: [[a]]->[a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs]
+  24  
+  25  mylengty :: [a] -> Int
+  26  mylength xs = sum [ 1 | _ <- xs]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:1: error:
+    The type signature for ‘mylengty’ lacks an accompanying binding
+      Perhaps you meant ‘mylength’ (Defined at src/First.hs:26:1)
+   |
+25 | mylengty :: [a] -> Int
+   | ^^^^^^^^
+Failed, no modules loaded.
+2022-06-30 15:53:02.6547003
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+
+src/First.hs:25:1: error:
+    The type signature for ‘mylengty’ lacks an accompanying binding
+      Perhaps you meant ‘mylength’ (Defined at src/First.hs:26:1)
+   |
+25 | mylengty :: [a] -> Int
+   | ^^^^^^^^
+Failed, no modules loaded.
+2022-06-30 15:53:02.7664663
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x =double (double x)
+   8  
+   9  factrial::Integer -> Integer
+  10  factrial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int 
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs)  = x : (init xs)
+  21  
+  22  myconcat :: [[a]]->[a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs]
+  24  
+  25  mylength :: [a] -> Int
+  26  mylength xs = sum [ 1 | _ <- xs]
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:53:26.552102
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-06-30 15:53:26.6739759
+>>> ['a'..'z']
+"abcdefghijklmnopqrstuvwxyz"
+2022-06-30 15:53:53.072889
+>>> ['あ'..'ん']
+"\12354\12355\12356\12357\12358\12359\12360\12361\12362\12363\12364\12365\12366\12367\12368\12369\12370\12371\12372\12373\12374\12375\12376\12377\12378\12379\12380\12381\12382\12383\12384\12385\12386\12387\12388\12389\12390\12391\12392\12393\12394\12395\12396\12397\12398\12399\12400\12401\12402\12403\12404\12405\12406\12407\12408\12409\12410\12411\12412\12413\12414\12415\12416\12417\12418\12419\12420\12421\12422\12423\12424\12425\12426\12427\12428\12429\12430\12431\12432\12433\12434\12435"
+2022-06-30 15:54:34.8507117
+>>> putStrLn it
+あぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん
+2022-06-30 15:54:59.9909642
+>>> [ x 'div' 2| x <-[1 .. 5]]
+
+<interactive>:23:5: error:
+    • Syntax error on 'div'
+      Perhaps you intended to use TemplateHaskell or TemplateHaskellQuotes
+    • In the Template Haskell quotation 'div'
+2022-06-30 15:55:26.4567793
+>>> [(x,y) | "abc",y<-[4,5]]
+
+<interactive>:24:3: error: Variable not in scope: x
+2022-06-30 15:56:28.3114867
+>>> :q
+Leaving GHCi.
