@@ -975,3 +975,28 @@ Loaded GHCi configuration from /home/saya/bprog2022/.ghci
 2022-07-07 09:38:18.7178204
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/saya/bprog2022/.ghci
+2022-07-07 16:04:59.7200777
+>>> :e src/Caesar.hs
+   1  module Caesar where
+   2  
+   3  import Data.Char
+Ok, no modules loaded.
+2022-07-07 16:05:31.129163
+>>> :l src/Caesar.hs
+[1 of 1] Compiling Caesar           ( src/Caesar.hs, interpreted )
+Ok, one module loaded.
+2022-07-07 16:05:31.2054027
+>>> ord 'A'
+65
+2022-07-07 16:05:52.3588388
+>>> ord'a'
+
+<interactive>:4:1: error: Variable not in scope: ord'a'
+2022-07-07 16:06:07.4120009
+>>> ord 'a'
+97
+2022-07-07 16:06:29.1212361
+>>> :q
+Leaving GHCi.
