@@ -910,3 +910,68 @@ Ok, one module loaded.
 2022-06-30 15:56:28.3114867
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/saya/bprog2022/.ghci
+2022-07-07 09:17:04.0182329
+>>> [ x ^ 2 |  x <-[1 .. 5] ]
+[1,4,9,16,25]
+2022-07-07 09:19:20.7304677
+>>> map (^2) [1 .. 5]]
+
+<interactive>:2:18: error: parse error on input ‘]’
+2022-07-07 09:19:53.6650425
+>>> map (2^) [1..5]
+[2,4,8,16,32]
+2022-07-07 09:20:28.9362784
+>>> map (^2) [1..5]
+[1,4,9,16,25]
+2022-07-07 09:20:54.9759391
+>>> [ x `div` 2 | x < [1..5]]
+
+<interactive>:5:3: error: Variable not in scope: x
+
+<interactive>:5:15: error: Variable not in scope: x :: [a0]
+2022-07-07 09:23:24.7221609
+>>> [ x `div` 2 | x <- [1..5]]
+[0,1,1,2,2]
+2022-07-07 09:24:03.8409234
+>>> [ x `divmod` 2 | x <- [1..5]]
+
+<interactive>:7:5: error:
+    • Variable not in scope: divmod :: t0 -> t1 -> a
+    • Perhaps you meant ‘divMod’ (imported from Prelude)
+2022-07-07 09:27:02.1023284
+>>> [ x `divmod` 2 | x <- [1 .. 5]]
+
+<interactive>:8:5: error:
+    • Variable not in scope: divmod :: t0 -> t1 -> a
+    • Perhaps you meant ‘divMod’ (imported from Prelude)
+2022-07-07 09:28:12.1183955
+>>> [x `divmod` 2|x <-[1 .. 5]]
+
+<interactive>:9:4: error:
+    • Variable not in scope: divmod :: t0 -> t1 -> a
+    • Perhaps you meant ‘divMod’ (imported from Prelude)
+2022-07-07 09:29:17.1241719
+>>> [(x,y) | x <- "abc",y<- [4,5]]
+[('a',4),('a',5),('b',4),('b',5),('c',4),('c',5)]
+2022-07-07 09:33:11.3978966
+>>> [(x,y) | y <- [4,5], x <- "abc"]
+[('a',4),('b',4),('c',4),('a',5),('b',5),('c',5)]
+2022-07-07 09:35:15.6343428
+>>> myconcat [[1,2,3],[4,5],[6,7,8,9]]
+
+<interactive>:12:1: error:
+    • Variable not in scope: myconcat :: [[a0]] -> t
+    • Perhaps you meant one of these:
+        ‘mconcat’ (imported from Prelude), ‘concat’ (imported from Prelude)
+2022-07-07 09:37:10.3445208
+>>> myconcat [[1,2,3],[4,5],[6,7,8,9]]
+
+<interactive>:13:1: error:
+    • Variable not in scope: myconcat :: [[a0]] -> t
+    • Perhaps you meant one of these:
+        ‘mconcat’ (imported from Prelude), ‘concat’ (imported from Prelude)
+2022-07-07 09:38:18.7178204
+>>> :q
+Leaving GHCi.
