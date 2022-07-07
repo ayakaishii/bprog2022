@@ -1000,3 +1000,47 @@ Ok, one module loaded.
 2022-07-07 16:06:29.1212361
 >>> :q
 Leaving GHCi.
+GHCi, version 9.0.2: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/saya/bprog2022/.ghci
+2022-07-07 16:19:37.6155232
+>>> :e src/First.hs
+   1  module First where
+   2  
+   3  double :: Int -> Int
+   4  double x = x + x
+   5  
+   6  quadruple :: Int -> Int
+   7  quadruple x =double (double x)
+   8  
+   9  factrial::Integer -> Integer
+  10  factrial n = product [1..n]
+  11  
+  12  average :: [Int] -> Int
+  13  average xs = sum xs `div` length xs
+  14  
+  15  ave :: [Int] -> Int 
+  16  ave xs = div (sum xs) (length xs)
+  17  
+  18  myinit :: [a] -> [a]
+  19  myinit (x:[]) = []
+  20  myinit (x:xs)  = x : (init xs)
+  21  
+  22  myconcat :: [[a]]->[a]
+  23  myconcat xss = [ x | xs <- xss, x <- xs]
+  24  
+  25  mylength :: [a] -> Int
+  26  mylength xs = sum [ 1 | _ <- xs]
+Ok, no modules loaded.
+2022-07-07 16:20:10.1357219
+>>> :l src/First.hs
+[1 of 1] Compiling First            ( src/First.hs, interpreted )
+Ok, one module loaded.
+2022-07-07 16:20:10.3971273
+>>> [x `divMod` 2|x<-[1..5]]
+[(0,1),(1,0),(1,1),(2,0),(2,1)]
+2022-07-07 16:21:16.4062264
+>>> myconcat[[1,2,3],[4,5],[6,7,8,9]]
+[1,2,3,4,5,6,7,8,9]
+2022-07-07 16:21:48.7946228
+>>> :q
+Leaving GHCi.
